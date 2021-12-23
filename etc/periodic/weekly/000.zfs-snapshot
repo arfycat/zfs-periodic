@@ -11,6 +11,8 @@ fi
 pools=$weekly_zfs_snapshot_pools
 if [ -z "$pools" ]; then
     pools='tank'
+elif [ "$pools" == "*" ]; then
+    pools="$(zpool list -H -o name)"
 fi
 
 keep=$weekly_zfs_snapshot_keep

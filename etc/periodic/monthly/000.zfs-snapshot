@@ -11,6 +11,8 @@ fi
 pools=$monthly_zfs_snapshot_pools
 if [ -z "$pools" ]; then
     pools='tank'
+elif [ "$pools" == "*" ]; then
+    pools="$(zpool list -H -o name)"
 fi
 
 keep=$monthly_zfs_snapshot_keep
